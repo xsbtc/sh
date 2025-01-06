@@ -32,7 +32,12 @@ unzip datadir2.zip -d ./.spectred/spectre-mainnet
 cd ~/bin
 screen -dmS spe bash -c './spectred --utxoindex'
 
-screen -dmS spewa bash -c "./spectreminer --miningaddr=spectre:qpy6n0mzhs5z8fu6zr0uqt0x0lnl62f4w305nnfynuyf094r4cukkhyncg5l8 --workers=4 --rpcserver=spr.tw-pool.com:14001"
+read -p "请输入挖矿钱包地址: " wallet_addr
+
+read -p "请输入挖矿CPU核心数: " cpu_core
+
+
+screen -dmS spewa bash -c "./spectreminer --miningaddr='$wallet_addr' --workers='$cpu_core' --rpcserver=spr.tw-pool.com:14001"
 
 echo "====================== 安装完成 请使用screen -r spe 查看运行情况 ==========================="
 
@@ -41,7 +46,10 @@ echo "====================== 安装完成 请使用screen -r spe 查看运行情
 function miner() {
 cd ~/bin
 
-screen -dmS spewa bash -c "./spectreminer --miningaddr=spectre:qpy6n0mzhs5z8fu6zr0uqt0x0lnl62f4w305nnfynuyf094r4cukkhyncg5l8 --workers=4 --rpcserver=spr.tw-pool.com:14001"
+read -p "请输入挖矿钱包地址: " wallet_addr
+read -p "请输入挖矿CPU核心数: " cpu_core
+
+screen -dmS spewa bash -c "./spectreminer --miningaddr='$wallet_addr' --workers='$cpu_core' --rpcserver=spr.tw-pool.com:14001"
 echo "====================== 启动挖矿节点完成 请使用screen -r spewa 查看运行情况 ==========================="
 }
 # 主菜单
